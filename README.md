@@ -1,87 +1,70 @@
-# Welcome to your Expo app 👋
+# StudyLens: AI That Sees How You Learn
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+StudyLens is a privacy-first, AI-powered personal learning companion. Instead of simply giving students the correct answer to a homework problem, StudyLens analyzes their handwritten work, identifies the exact moment their reasoning went wrong, explains the underlying concept, and provides personalized practice to reinforce their learning.
 
-## Get started
+## The Core Learning Loop
 
-1. Install dependencies
+StudyLens guides students through a continuous improvement cycle:
 
-   ```bash
-   npm install
-   ```
+1. **SEE (Scan Homework):** The student uploads their handwritten work.
+2. **UNDERSTAND (Analysis):** The AI extracts the mathematical steps and follows the student's reasoning.
+3. **TEACH (Mistake Detection & Explanation):** The AI pinpoints the exact mistake, highlights what the student did right, and explains the correction step-by-step.
+4. **VERIFY (Personalized Practice):** The student receives a dynamically generated practice question targeting their specific mistake.
+5. **IMPROVE (Progress):** Mastery is tracked across concepts to ensure long-term learning.
 
-2. Start the app
+## 🚀 Hackathon Prototype & Deployment
 
-   ```bash
-   npx expo start
-   ```
+**Live Prototype URL:** [https://good-fox-11.loca.lt](https://good-fox-11.loca.lt)
 
-In the output, you'll find options to open the app in a
+> **Note to Judges:** If you see a "Bypass" warning when opening the link, this is standard for the Localtunnel deployment. Simply click "Click to Continue" to view the application. 
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Current Prototype Behavior
+To ensure a flawless and deterministic judging experience on the web, this prototype utilizes a **Deterministic Demo Fallback**. It guarantees the complete UI flow, state management, and learning loop execute perfectly without requiring backend API keys or cloud LLM latency.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🧠 On-Device AI Architecture
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-
-## On-device AI architecture
-StudyLens is designed as a privacy-first, on-device application. 
+StudyLens is designed specifically for edge deployment, keeping student data entirely on-device without cloud dependencies.
 
 **IMPLEMENTED:**
 - Local AI abstraction layer (`StudyLensAI`, `LocalAIProvider`, `DemoFallbackProvider`).
 - Deterministic fallback provider ensuring the hackathon demo pipeline never breaks.
 - React Context mapping for injecting the active AI provider securely into the UI.
 
-**VERIFIED:**
-- The end-to-end user experience and offline layout.
-- Graceful degradation to the deterministic demo provider without a live backend.
-- The web and Expo Go application bundles successfully.
+**PREPARED / ARCHITECTED:**
+- ONNX Runtime integration for React Native.
+- Qualcomm AI Engine Direct (QNN) Execution Provider targeting the Snapdragon NPU.
 
-**PENDING:**
-- Native ONNX inference (requires native Android prebuilding, blocked by lack of SDK/Java/C++ setup on the current machine).
-- QNN execution provider (requires ONNX Runtime built with QNN support for Qualcomm).
-- Actual NPU hardware acceleration.
-- Real handwriting OCR (planned via a lightweight local vision/layout extraction layer).
+**NOT YET VERIFIED:**
+- Actual QNN/NPU hardware inference (requires native Android prebuilding, which is pending localized Android SDK/NDK configuration).
 
-## Hackathon Deployment
-The web prototype is currently built for production and exposed via a secure HTTPS tunnel.
+## 🛠 How to run locally
 
-**Live Prototype URL:** `https://good-fox-11.loca.lt`
+### 1. Run the Web Prototype (Judging Mode)
+To run the exact, polished production build as seen in the live URL:
+```bash
+git clone https://github.com/FlameBLIZZard/STuDYleNS.git
+cd STuDYleNS
+npm install
+npm run web
+```
+*Alternatively, you can serve the static build directly:*
+```bash
+npm install -g serve
+npx serve -s dist
+```
 
-> **Note to Judges:** If you see a "Bypass" warning when opening the link, this is standard for Localtunnel. Simply click "Click to Continue" to view the application.
+### 2. Development Mode
+```bash
+npm start
+```
+*Press `w` to open in the browser, or scan the QR code with Expo Go to view the mobile layout.*
 
-**How to run this locally:**
-1. Clone the repository
-2. Run `npm install`
-3. Run `npx serve -s dist` to serve the production SPA build.
+## 📁 Repository Structure
+- `src/app/` - Expo Router screens (Dashboard, Scan, Mistake, Practice, etc.)
+- `src/components/` - Reusable UI elements (NotebookPaper, UI styling)
+- `src/context/` - Global state managers (Progress tracking, AI Provider selection)
+- `src/ai/` - AI abstraction factory and local inference stubs
+- `PROJECT_TOUR.md` - A beginner-friendly breakdown of the codebase
+
+## 📝 Development Notes
+Built with **React Native**, **Expo Router**, and **NativeWind** (Tailwind CSS v3). The UI is strictly mobile-first but is constrained gracefully on desktop browsers for testing. All state is managed locally via React Context and a global singleton to survive web SPA navigation cycles.

@@ -1,4 +1,4 @@
-# Welcome to Your New Project
+# StudyLens Project Tour
 
 ## 1. What does this project do?
 StudyLens is like having a really smart, patient tutor living inside your phone. Imagine you're doing your math homework, and you get stuck or get the wrong answer. Instead of just telling you the right answer (which doesn't really help you learn), StudyLens looks at your handwritten work through your phone's camera. 
