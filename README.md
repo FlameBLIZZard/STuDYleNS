@@ -1,155 +1,116 @@
-<div align="center">
-  
 # StudyLens
 
 **AI that sees how you learn.**
 
-*Student reasoning > final answer.*
+Student reasoning > final answer.
 
-StudyLens is a phone-first intelligent learning companion that analyzes a student's work, identifies where their reasoning changed, explains the underlying mistake, generates targeted practice, and tracks improvement.
-
-![Mistake Detection](docs/screenshots/3-detect.png)
-*StudyLens identifies where the student's reasoning changed — not just whether the final answer is wrong.*
-
-![Expo](https://img.shields.io/badge/Expo-1C1E24?style=flat-square&logo=expo&logoColor=white)
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat-square&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)
-
+<div align="center">
+  <img src="docs/screenshots/3-detect.png" width="320"/>
 </div>
 
----
-
-## Try the Prototype
-
-> **Deployment-ready for Vercel.** A permanent public URL will be added once the repository is connected to Vercel.
-
-**Vercel Deployment Instructions:**
-1. Import this GitHub repository into the Vercel Dashboard.
-2. Ensure the Framework Preset is either **Other** or **None**.
-3. **Build Command:** `npx expo export -p web`
-4. **Output Directory:** `dist`
-
-*(The repository contains a `vercel.json` configured with `"cleanUrls": true` to properly route deep links natively for the statically exported Expo Router).*
+StudyLens analyzes how a student solved a problem,
+finds where their reasoning changed,
+explains the mistake,
+and turns it into targeted practice.
 
 ---
 
-## Product Preview
+## Traditional Answer Checking VS StudyLens Reasoning Analysis
 
-### 1. Dashboard
-![Dashboard](docs/screenshots/1-dashboard.png)
-*View your overall mastery.*
-
-### 2. Scan Homework
-![Scan Homework](docs/screenshots/2-scan.png)
-*Show StudyLens how you solved it.*
-
-### 3. Mistake Detection
-![Mistake Detection](docs/screenshots/3-detect.png)
-*StudyLens identifies the exact step where reasoning changed.*
-
-### 4. Explanation
-![Explanation](docs/screenshots/4-explain.png)
-*Instead of revealing an answer, it explains why the step was incorrect.*
-
-### 5. Personalized Practice
-![Personalized Practice](docs/screenshots/5-practice.png)
-*Targeted practice reinforces the exact concept behind the mistake.*
-
-### 6. Progress
-![Progress](docs/screenshots/6-progress.png)
-*Watch your mastery grow over time.*
-
----
-
-## The Difference
-
-**Traditional Homework Checking:**
-```mermaid
-graph LR
-    A["Question"] --> B["Answer"]
-    B --> C["Correct / Incorrect"]
-```
-
-**StudyLens:**
-```mermaid
-graph LR
-    A["Student Work"] --> B["Reasoning"]
-    B --> C["Exact Mistake"]
-    C --> D["Explanation"]
-    D --> E["Targeted Practice"]
-    E --> F["Verification"]
-    F --> G["Improvement"]
-```
+<table>
+<tr>
+<th align="center">TRADITIONAL</th>
+<th align="center">STUDYLENS</th>
+</tr>
+<tr>
+<td align="center">
+Answer<br/>
+&darr;<br/>
+Correct / Incorrect
+</td>
+<td align="center">
+Student Work<br/>
+&darr;<br/>
+Reasoning<br/>
+&darr;<br/>
+Exact Mistake<br/>
+&darr;<br/>
+Why?<br/>
+&darr;<br/>
+Practice<br/>
+&darr;<br/>
+Verified Improvement
+</td>
+</tr>
+</table>
 
 ---
 
 ## One Mistake. One Learning Loop.
 
-See StudyLens in action.
-
-**Student submits their handwritten work:**
 ```text
-Solve for x:
 2x + 3 = 11
 2x = 11 - 3
 2x = 8
 x = 3
 ```
 
-**Detected:**
-> **Step 4 — `x = 3`**
+**DETECTED**
+> Step 4
 
-**Correct reasoning:**
-> `2x = 8`
-> `/2   /2`
-> `x = 4`
+**CORRECT**
+> 2x = 8
+> /2   /2
+> x = 4
 
-**Personalized Practice:**
-> `3x + 5 = 20`
-> `x = 5`
+**PRACTICE**
+> 3x + 5 = 20
+> x = 5
 
-**Mastery:**
-> **75%**
-
----
-
-## The StudyLens Learning Loop
-
-```mermaid
-graph TD
-    A["01 - Capture"] --> B["02 - Understand"]
-    B --> C["03 - Detect"]
-    C --> D["04 - Explain"]
-    D --> E["05 - Practice"]
-    E --> F["06 - Verify"]
-    F --> G["07 - Improve"]
-```
-
-- **Capture:** Student submits handwritten work.
-- **Understand:** StudyLens interprets the student's sequence of steps.
-- **Detect:** The system identifies the exact point where reasoning changed.
-- **Explain:** The student sees why the step was problematic and how to correct it.
-- **Practice:** StudyLens gives a targeted problem based on the detected weakness.
-- **Verify:** The student demonstrates that they can apply the concept.
-- **Improve:** The improvement is reflected in their learning state.
+**MASTERY**
+> 75%
 
 ---
 
-## Designed Around How Students Actually Learn
+## Product Preview
 
-1. **Process over answers:** We evaluate how a student thinks, not just the final number they produce.
-2. **Teach the mistake:** We intercept learning at the exact moment of misunderstanding.
-3. **Practice the weakness:** Remediation is deeply personalized to the student's actual error.
-4. **Verify understanding:** Students must demonstrate mastery before moving forward.
-5. **Track improvement:** A persistent learning state ensures long-term educational growth.
+<table>
+<tr>
+<td align="center">
+<img src="docs/screenshots/1-dashboard.png" width="220"/><br/>
+<b>Dashboard</b>
+</td>
+<td align="center">
+<img src="docs/screenshots/2-scan.png" width="220"/><br/>
+<b>Scan</b>
+</td>
+<td align="center">
+<img src="docs/screenshots/3-detect.png" width="220"/><br/>
+<b>Mistake Detection</b>
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="docs/screenshots/4-explain.png" width="220"/><br/>
+<b>Explanation</b>
+</td>
+<td align="center">
+<img src="docs/screenshots/5-practice.png" width="220"/><br/>
+<b>Practice</b>
+</td>
+<td align="center">
+<img src="docs/screenshots/6-progress.png" width="220"/><br/>
+<b>Progress</b>
+</td>
+</tr>
+</table>
 
 ---
 
 ## Technical Status
 
 | Capability | Status |
-| :--- | :--- |
+| --- | --- |
 | Core learning loop | **Implemented** |
 | Scan experience | **Implemented** |
 | Mistake visualization | **Implemented** |
@@ -169,38 +130,13 @@ graph TD
 
 ## On-Device AI Architecture
 
-```mermaid
-graph TD
-    A["Student Work"] --> B["Local Vision / OCR"]
-    B --> C["Structured Mathematical Steps"]
-    C --> D["Local Reasoning Model"]
-    D --> E["Mistake Detection"]
-    E --> F["Explanation"]
-    F --> G["Targeted Practice"]
-    G --> H["Progress"]
-    
-    subgraph web_demo ["WEB DEMO"]
-    I["DemoFallbackProvider"]
-    end
-    
-    subgraph native_path ["NATIVE PATH"]
-    J["LocalAIProvider"]
-    K["ONNX Runtime architecture"]
-    L["QNN architecture"]
-    M["NPU execution NOT YET VERIFIED"]
-    end
-    
-    I -.->|IMPLEMENTED| D
-    J -.->|PREPARED| D
-    K -.->|PREPARED| J
-    L -.->|PREPARED| K
-    M -.->|NOT VERIFIED| L
-```
+**Data Flow**
+Student Work &rarr; Local Vision / OCR &rarr; Structured Mathematical Steps &rarr; Local Reasoning Model &rarr; Mistake Detection &rarr; Explanation &rarr; Targeted Practice &rarr; Progress
 
 ### Current Implementation:
-- **IMPLEMENTED:** AI provider abstraction, `LocalAIProvider`, `DemoFallbackProvider`.
-- **PREPARED:** ONNX Runtime integration, QNN execution provider.
-- **NOT YET VERIFIED:** Actual Android QNN execution and Snapdragon NPU acceleration.
+- **IMPLEMENTED:** AI provider abstraction, `LocalAIProvider`, `DemoFallbackProvider`
+- **PREPARED:** ONNX Runtime integration, QNN execution provider
+- **NOT YET VERIFIED:** Actual Android QNN execution and Snapdragon NPU acceleration
 
 ---
 
