@@ -1,6 +1,8 @@
 import "../global.css";
 import { Stack, ThemeProvider, DefaultTheme } from "expo-router";
 
+import { ProgressProvider } from "../context/ProgressContext";
+
 const LightTheme = {
   ...DefaultTheme,
   colors: {
@@ -12,7 +14,8 @@ const LightTheme = {
 
 export default function RootLayout() {
   return (
-    <ThemeProvider value={LightTheme}>
+    <ProgressProvider>
+      <ThemeProvider value={LightTheme}>
       <Stack
         screenOptions={{
           headerStyle: { backgroundColor: '#FFFFFF' },
@@ -32,5 +35,6 @@ export default function RootLayout() {
         <Stack.Screen name="progress" options={{ title: 'Your Progress' }} />
       </Stack>
     </ThemeProvider>
+    </ProgressProvider>
   );
 }

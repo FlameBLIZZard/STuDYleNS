@@ -1,8 +1,10 @@
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
+import { useProgress } from "../context/ProgressContext";
 
 export default function DashboardScreen() {
   const router = useRouter();
+  const { mastery } = useProgress();
 
   return (
     <ScrollView className="flex-1 bg-background pt-16 px-6">
@@ -27,7 +29,7 @@ export default function DashboardScreen() {
           <Text className="text-2xl mb-2">💬</Text>
           <Text className="text-text font-semibold">Ask StudyLens</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="flex-1 bg-card p-4 rounded-2xl items-center shadow-sm border border-gray-100">
+        <TouchableOpacity className="flex-1 bg-card p-4 rounded-2xl items-center shadow-sm border border-gray-100" onPress={() => router.push("/practice")}>
           <Text className="text-2xl mb-2">✏️</Text>
           <Text className="text-text font-semibold">Practice</Text>
         </TouchableOpacity>
@@ -43,10 +45,10 @@ export default function DashboardScreen() {
         <View className="gap-3">
           <View className="flex-row justify-between items-center">
             <Text className="text-textSecondary">Linear Equations</Text>
-            <Text className="font-bold text-secondary">72%</Text>
+            <Text className="font-bold text-secondary">{mastery}%</Text>
           </View>
           <View className="h-2 bg-gray-100 rounded-full w-full overflow-hidden">
-            <View className="h-full bg-secondary w-[72%] rounded-full" />
+            <View className="h-full bg-secondary rounded-full" style={{ width: `${mastery}%` }} />
           </View>
           <View className="flex-row justify-between mt-2">
             <Text className="text-sm text-textSecondary">Recent mistakes: 4</Text>

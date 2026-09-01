@@ -2,9 +2,11 @@ import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import Animated, { FadeInUp } from "react-native-reanimated";
+import { useProgress } from "../context/ProgressContext";
 
 export default function PracticeScreen() {
   const router = useRouter();
+  const { completePractice } = useProgress();
   const [answer, setAnswer] = useState("");
   const [showHint, setShowHint] = useState(false);
 
@@ -12,6 +14,7 @@ export default function PracticeScreen() {
     // Accept variations like '5', 'x=5', 'x = 5'
     const normalized = answer.toLowerCase().replace(/\s/g, '');
     if (normalized === "5" || normalized === "x=5") {
+      completePractice();
       router.push("/verification?status=success");
     } else {
       setShowHint(true);

@@ -1,11 +1,13 @@
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import Animated, { FadeInUp, FadeIn } from "react-native-reanimated";
+import { useProgress } from "../context/ProgressContext";
 
 export default function VerificationScreen() {
   const router = useRouter();
   const { status } = useLocalSearchParams();
   const isSuccess = status === 'success';
+  const { mastery } = useProgress();
 
   if (!isSuccess) {
     // Fallback if accessed without success (though we handle errors on practice screen now)
@@ -76,10 +78,11 @@ export default function VerificationScreen() {
         <View className="h-2 bg-gray-200 rounded-full w-full overflow-hidden">
           <Animated.View 
             entering={FadeIn.delay(1000).duration(800)}
-            className="h-full bg-secondary w-[75%] rounded-full" 
+            className="h-full bg-secondary rounded-full" 
+            style={{ width: `${mastery}%` }}
           />
         </View>
-        <Text className="text-right text-xs text-secondary font-bold mt-2">75% Mastery</Text>
+        <Text className="text-right text-xs text-secondary font-bold mt-2">{mastery}% Mastery</Text>
       </Animated.View>
 
       {/* ACTIONS */}
