@@ -24,7 +24,12 @@ export default function RootLayout() {
           headerTintColor: '#2B5B84',
           headerTitleStyle: { fontWeight: '600' },
           headerShadowVisible: false,
-          contentStyle: { backgroundColor: '#F8F9FA' }
+          contentStyle: { 
+            backgroundColor: '#F8F9FA',
+            maxWidth: 480,
+            width: '100%',
+            marginHorizontal: 'auto'
+          }
         }}
       >
         <Stack.Screen name="index" options={{ title: 'StudyLens', headerShown: false }} />
