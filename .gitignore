@@ -52,17 +52,21 @@ Thumbs.db
 /android/
 
 # IDE / Editor
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.vscode/
 .idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# AI Coding Agents
+.claude/
+.cursor/
+.agents/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
 
 # Testing
 coverage/
