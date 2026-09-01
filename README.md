@@ -14,9 +14,17 @@ StudyLens guides students through a continuous improvement cycle:
 
 ## 🚀 Hackathon Prototype & Deployment
 
-**Live Prototype URL:** [https://good-fox-11.loca.lt](https://good-fox-11.loca.lt)
+**Deployment Status:** Repository is deployment-ready; manual Vercel authentication is required.
 
-> **Note to Judges:** If you see a "Bypass" warning when opening the link, this is standard for the Localtunnel deployment. Simply click "Click to Continue" to view the application. 
+To deploy this project to a permanent public HTTPS URL for the hackathon, please use Vercel:
+
+1. Log into your [Vercel Dashboard](https://vercel.com/new).
+2. Import the `STuDYleNS` GitHub repository.
+3. Vercel will automatically detect the settings, but ensure:
+   - **Framework Preset:** Other / None (or Next.js/Create React App if detected, just override build command)
+   - **Build Command:** `npm run export` or `npx expo export -p web`
+   - **Output Directory:** `dist`
+4. Deploy! Vercel's `cleanUrls` setting is pre-configured via `vercel.json` to handle Expo Router deep links correctly.
 
 ### Current Prototype Behavior
 To ensure a flawless and deterministic judging experience on the web, this prototype utilizes a **Deterministic Demo Fallback**. It guarantees the complete UI flow, state management, and learning loop execute perfectly without requiring backend API keys or cloud LLM latency.
