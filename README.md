@@ -37,12 +37,12 @@ StudyLens is a phone-first intelligent learning companion that analyzes a studen
 
 | Dashboard | Scan Homework | Mistake Detection |
 | :---: | :---: | :---: |
-| ![Dashboard](docs/screenshots/1-dashboard.png) | ![Scan](docs/screenshots/2-scan.png) | ![Detect](docs/screenshots/3-detect.png) |
+| ![Dashboard](docs/screenshots/1-dashboard.svg) | ![Scan](docs/screenshots/2-scan.svg) | ![Detect](docs/screenshots/3-detect.svg) |
 | *View your overall mastery.* | *Show StudyLens how you solved it.* | *StudyLens identifies the exact step where reasoning changed.* |
 
 | Explanation | Personalized Practice | Progress |
 | :---: | :---: | :---: |
-| ![Explanation](docs/screenshots/4-explain.png) | ![Practice](docs/screenshots/5-practice.png) | ![Progress](docs/screenshots/6-progress.png) |
+| ![Explanation](docs/screenshots/4-explain.svg) | ![Practice](docs/screenshots/5-practice.svg) | ![Progress](docs/screenshots/6-progress.svg) |
 | *Instead of revealing an answer, it explains why the step was incorrect.* | *Targeted practice reinforces the exact concept behind the mistake.* | *Watch your mastery grow over time.* |
 
 ---
@@ -52,19 +52,19 @@ StudyLens is a phone-first intelligent learning companion that analyzes a studen
 **Traditional Homework Checking:**
 ```mermaid
 graph LR
-    A[Question] --> B[Answer]
-    B --> C[Correct / Incorrect]
+    A["Question"] --> B["Answer"]
+    B --> C["Correct / Incorrect"]
 ```
 
 **StudyLens:**
 ```mermaid
 graph LR
-    A[Student Work] --> B[Reasoning]
-    B --> C[Exact Mistake]
-    C --> D[Explanation]
-    D --> E[Targeted Practice]
-    E --> F[Verification]
-    F --> G[Improvement]
+    A["Student Work"] --> B["Reasoning"]
+    B --> C["Exact Mistake"]
+    C --> D["Explanation"]
+    D --> E["Targeted Practice"]
+    E --> F["Verification"]
+    F --> G["Improvement"]
 ```
 
 ---
@@ -87,7 +87,7 @@ x = 3
 
 **Correct reasoning:**
 > `2x = 8`
-> `÷2   ÷2`
+> `/2   /2`
 > `x = 4`
 
 **Personalized Practice:**
@@ -103,12 +103,12 @@ x = 3
 
 ```mermaid
 graph TD
-    A[01 - Capture] --> B[02 - Understand]
-    B --> C[03 - Detect]
-    C --> D[04 - Explain]
-    D --> E[05 - Practice]
-    E --> F[06 - Verify]
-    F --> G[07 - Improve]
+    A["01 - Capture"] --> B["02 - Understand"]
+    B --> C["03 - Detect"]
+    C --> D["04 - Explain"]
+    D --> E["05 - Practice"]
+    E --> F["06 - Verify"]
+    F --> G["07 - Improve"]
 ```
 
 - **Capture:** Student submits handwritten work.
@@ -156,23 +156,23 @@ graph TD
 
 ```mermaid
 graph TD
-    A[Student Work] --> B[Local Vision / OCR]
-    B --> C[Structured Mathematical Steps]
-    C --> D[Local Reasoning Model]
-    D --> E[Mistake Detection]
-    E --> F[Explanation]
-    F --> G[Targeted Practice]
-    G --> H[Progress]
+    A["Student Work"] --> B["Local Vision / OCR"]
+    B --> C["Structured Mathematical Steps"]
+    C --> D["Local Reasoning Model"]
+    D --> E["Mistake Detection"]
+    E --> F["Explanation"]
+    F --> G["Targeted Practice"]
+    G --> H["Progress"]
     
-    subgraph WEB DEMO
-    I[DemoFallbackProvider]
+    subgraph web_demo ["WEB DEMO"]
+    I["DemoFallbackProvider"]
     end
     
-    subgraph NATIVE PATH
-    J[LocalAIProvider]
-    K[ONNX Runtime architecture]
-    L[QNN architecture]
-    M[NPU execution NOT YET VERIFIED]
+    subgraph native_path ["NATIVE PATH"]
+    J["LocalAIProvider"]
+    K["ONNX Runtime architecture"]
+    L["QNN architecture"]
+    M["NPU execution NOT YET VERIFIED"]
     end
     
     I -.->|IMPLEMENTED| D
