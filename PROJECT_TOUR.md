@@ -20,3 +20,19 @@ In the real version, the phone's camera would take a picture and an AI would rea
 - **/components:** This folder holds smaller pieces of the app that we might reuse in different places, like buttons or special cards.
 - **/constants:** This is where we keep colors, fonts, and dummy data (our pretend homework problems) so we can use them easily throughout the app.
 - **package.json:** This is like the recipe book for the project. It lists all the different tools and libraries (like React Native and NativeWind) that the app needs to run properly.
+
+## 5. On-device AI architecture
+StudyLens is designed as a privacy-first, on-device application. No student imagery or math work is sent to cloud LLMs (like OpenAI or Gemini).
+
+**What runs locally:**
+Everything. All logic, UI state, progress tracking, and component rendering happens securely on the phone. The architecture includes an abstraction factory (\StudyLensAI\) designed to load local inference providers.
+
+**What is currently mocked:**
+Because standard Expo Go and web browsers cannot securely or natively load raw C++ ML frameworks (like ONNX Runtime with Qualcomm NPU delegation) out of the box, the prototype uses a \DemoFallbackProvider\. This provider simulates the exact AI pipeline deterministically (extracting steps, finding mistake step 4, explaining division rules) so the live hackathon demo never fails.
+
+**What requires a native Android build:**
+To swap out the mock for the real \LocalAIProvider\, we need to compile a Custom Expo Dev Client (\
+px expo run:android\) that embeds \eact-native-onnxruntime\. 
+
+**What hardware acceleration is supported (Planned):**
+When running a compiled Android build on devices like the iQOO, the ONNX Runtime will be configured to use the **QNN Execution Provider (Qualcomm AI Engine Direct)**. This allows the small model (e.g., Phi-3-mini or a specialized math model) to run directly on the Snapdragon NPU, ensuring ultra-low latency inference without draining the main CPU/battery.

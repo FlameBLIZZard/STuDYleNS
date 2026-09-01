@@ -1,10 +1,12 @@
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 import { useProgress } from "../context/ProgressContext";
+import { useAI } from "../context/AIContext";
 
 export default function DashboardScreen() {
   const router = useRouter();
   const { mastery } = useProgress();
+  const { ai } = useAI();
 
   return (
     <ScrollView className="flex-1 bg-background pt-16 px-6">
@@ -57,13 +59,17 @@ export default function DashboardScreen() {
         </View>
       </View>
 
-      <View className="bg-[#E8F4F1] rounded-3xl p-6 mb-8">
+      <View className="bg-[#E8F4F1] rounded-3xl p-6 mb-4">
         <Text className="text-sm font-bold text-secondary mb-1">RECOMMENDED FOR YOU</Text>
         <Text className="text-lg font-bold text-text mb-2">Review: Isolating Variables</Text>
         <TouchableOpacity className="bg-white self-start px-4 py-2 rounded-full mt-2">
           <Text className="text-secondary font-bold text-sm">Start Quick Lesson</Text>
         </TouchableOpacity>
       </View>
+
+      <Text className="text-[10px] text-gray-400 text-center mb-8 opacity-50">
+        AI Provider: {ai.modelName}
+      </Text>
     </ScrollView>
   );
 }

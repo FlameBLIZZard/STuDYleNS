@@ -2,6 +2,7 @@ import "../global.css";
 import { Stack, ThemeProvider, DefaultTheme } from "expo-router";
 
 import { ProgressProvider } from "../context/ProgressContext";
+import { AIProvider } from "../context/AIContext";
 
 const LightTheme = {
   ...DefaultTheme,
@@ -14,7 +15,8 @@ const LightTheme = {
 
 export default function RootLayout() {
   return (
-    <ProgressProvider>
+    <AIProvider>
+      <ProgressProvider>
       <ThemeProvider value={LightTheme}>
       <Stack
         screenOptions={{
@@ -36,5 +38,6 @@ export default function RootLayout() {
       </Stack>
     </ThemeProvider>
     </ProgressProvider>
+    </AIProvider>
   );
 }
