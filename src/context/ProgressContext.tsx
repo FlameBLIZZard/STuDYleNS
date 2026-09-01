@@ -1,4 +1,20 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+
+// Global Singleton Store to survive all navigation unmounts
+const defaultActivity = [
+  { id: '1', label: 'Mistake identified', completed: false },
+  { id: '2', label: 'Concept explained', completed: false },
+  { id: '3', label: 'Practice completed', completed: false },
+  { id: '4', label: 'Skill reinforced', completed: false },
+];
+
+let globalMastery = 50;
+let globalActivity = [...defaultActivity];
+let listeners: Array<() => void> = [];
+
+const notifyListeners = () => {
+  listeners.forEach(listener => listener());
+};
 
 type ProgressState = {
   mastery: number;
@@ -6,13 +22,6 @@ type ProgressState = {
   completePractice: () => void;
   resetProgress: () => void;
 };
-
-const defaultActivity = [
-  { id: '1', label: 'Mistake identified', completed: false },
-  { id: '2', label: 'Concept explained', completed: false },
-  { id: '3', label: 'Practice completed', completed: false },
-  { id: '4', label: 'Skill reinforced', completed: false },
-];
 
 const ProgressContext = createContext<ProgressState>({
   mastery: 50,
@@ -24,17 +33,30 @@ const ProgressContext = createContext<ProgressState>({
 export const useProgress = () => useContext(ProgressContext);
 
 export const ProgressProvider = ({ children }: { children: React.ReactNode }) => {
-  const [mastery, setMastery] = useState(50);
-  const [recentActivity, setRecentActivity] = useState(defaultActivity);
+  const [mastery, setMastery] = useState(globalMastery);
+  const [recentActivity, setRecentActivity] = useState(globalActivity);
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setMastery(globalMastery);
+      setRecentActivity(globalActivity);
+    };
+    listeners.push(handleUpdate);
+    return () => {
+      listeners = listeners.filter(l => l !== handleUpdate);
+    };
+  }, []);
 
   const completePractice = () => {
-    setMastery(75);
-    setRecentActivity(defaultActivity.map(item => ({ ...item, completed: true })));
+    globalMastery = 75;
+    globalActivity = globalActivity.map(item => ({ ...item, completed: true }));
+    notifyListeners();
   };
 
   const resetProgress = () => {
-    setMastery(50);
-    setRecentActivity(defaultActivity);
+    globalMastery = 50;
+    globalActivity = [...defaultActivity];
+    notifyListeners();
   };
 
   return (

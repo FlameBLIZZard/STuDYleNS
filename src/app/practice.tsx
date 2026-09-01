@@ -53,20 +53,20 @@ export default function PracticeScreen() {
           className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 items-center mb-6"
         >
           <Text className="text-textSecondary mb-4 text-center text-lg font-medium">Find x</Text>
-          <Text className="text-4xl font-bold text-text font-mono mb-8 tracking-widest" style={{ fontFamily: 'monospace' }}>3x + 5 = 20</Text>
+          <Text className="text-5xl font-bold text-text font-mono mb-8 tracking-widest" style={{ fontFamily: 'monospace' }}>3x + 5 = 20</Text>
           
-          <View className="flex-row items-center bg-gray-50 p-2 rounded-2xl border border-gray-100">
-            <Text className="text-3xl font-mono mx-4 text-textSecondary" style={{ fontFamily: 'monospace' }}>x =</Text>
+          <View className="flex-row items-center justify-center bg-gray-50 p-4 rounded-3xl border-2 border-gray-100 w-full max-w-[280px]">
+            <Text className="text-4xl font-mono mr-4 text-textSecondary" style={{ fontFamily: 'monospace' }}>x =</Text>
             <TextInput 
-              className="bg-white border border-gray-200 rounded-xl w-32 h-16 text-center text-2xl font-bold font-mono"
+              className="bg-white border-2 border-gray-200 rounded-2xl w-32 h-20 text-center text-3xl font-bold font-mono shadow-sm"
               style={{ fontFamily: 'monospace' }}
-              keyboardType="default" // Allow typing "x = 5"
+              keyboardType="default"
               autoCapitalize="none"
               autoCorrect={false}
               value={answer}
               onChangeText={(text) => {
                 setAnswer(text);
-                if (showHint) setShowHint(false); // Hide hint when typing again
+                if (showHint) setShowHint(false);
               }}
               placeholder="?"
               placeholderTextColor="#9CA3AF"

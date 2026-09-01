@@ -7,3 +7,25 @@
     Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji,
     Segoe UI Symbol, Noto Color Emoji;
 }
+
+@media (min-width: 640px) {
+  body {
+    background-color: #E2E8F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  #root, #__next {
+    width: 100%;
+    max-width: 480px;
+    height: 90vh;
+    max-height: 900px;
+    min-height: 600px;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    background-color: #F8F9FA;
+  }
+}
+

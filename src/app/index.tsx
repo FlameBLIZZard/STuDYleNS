@@ -46,14 +46,19 @@ export default function DashboardScreen() {
         </View>
         <View className="gap-3">
           <View className="flex-row justify-between items-center">
-            <Text className="text-textSecondary">Linear Equations</Text>
-            <Text className="font-bold text-secondary">{mastery}%</Text>
+            <View>
+              <Text className="text-textSecondary font-medium">Solving Linear Equations</Text>
+              {mastery > 50 && (
+                <Text className="text-secondary font-bold text-xs mt-0.5">Improved today</Text>
+              )}
+            </View>
+            <Text className="font-bold text-secondary text-lg">{mastery}%</Text>
           </View>
-          <View className="h-2 bg-gray-100 rounded-full w-full overflow-hidden">
+          <View className="h-2 bg-gray-100 rounded-full w-full overflow-hidden mt-1">
             <View className="h-full bg-secondary rounded-full" style={{ width: `${mastery}%` }} />
           </View>
           <View className="flex-row justify-between mt-2">
-            <Text className="text-sm text-textSecondary">Recent mistakes: 4</Text>
+            <Text className="text-sm text-textSecondary">Recent mistakes: {mastery > 50 ? '3' : '4'}</Text>
             <Text className="text-sm text-textSecondary">Focus: Solving</Text>
           </View>
         </View>
