@@ -67,9 +67,12 @@ export default function DashboardScreen() {
         </TouchableOpacity>
       </View>
 
-      <Text className="text-[10px] text-gray-400 text-center mb-8 opacity-50">
-        AI Provider: {ai.modelName}
-      </Text>
+      <View className="mb-10 px-4 opacity-40">
+        <Text className="text-[10px] font-mono text-gray-500">AI Provider: {ai.isLocal ? 'LOCAL ONNX' : 'DEMO FALLBACK'}</Text>
+        <Text className="text-[10px] font-mono text-gray-500">Model: {ai.modelName}</Text>
+        <Text className="text-[10px] font-mono text-gray-500">Runtime: ONNX Runtime (Prepared)</Text>
+        <Text className="text-[10px] font-mono text-gray-500">Execution Provider: QNN (Architected)</Text>
+      </View>
     </ScrollView>
   );
 }
