@@ -8,24 +8,42 @@
     Segoe UI Symbol, Noto Color Emoji;
 }
 
-@media (min-width: 640px) {
-  body {
-    background-color: #E2E8F0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  #root, #__next {
-    width: 100%;
-    max-width: 480px;
-    height: 90vh;
-    max-height: 900px;
-    min-height: 600px;
-    border-radius: 40px;
-    overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    background-color: #F8F9FA;
-  }
+/* Eliminate nested scrolling for web by overriding Expo's default locked body height */
+html, body {
+  height: auto !important;
+  min-height: 100vh;
+  overflow: auto !important;
 }
 
+#root, #__next {
+  height: auto !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 
+  React Native Web translates ScrollView to use the .r-150rngu class for overflow-y: auto.
+  We override this to allow the container to grow, letting the browser handle scrolling.
+*/
+.r-150rngu {
+  overflow: visible !important;
+}
+
+@media (min-width: 640px) {
+  body {
+    background-color: #F1F5F9;
+    padding: 40px 20px;
+  }
+  
+  #root, #__next {
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    background-color: #F8F9FA;
+    border-radius: 24px;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    overflow: hidden !important; /* Retain border radius clipping for the shell */
+  }
+}

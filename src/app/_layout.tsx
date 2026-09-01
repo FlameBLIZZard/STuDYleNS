@@ -1,6 +1,6 @@
 import "../global.css";
 import { Stack, ThemeProvider, DefaultTheme } from "expo-router";
-
+import Head from "expo-router/head";
 import { ProgressProvider } from "../context/ProgressContext";
 import { AIProvider } from "../context/AIContext";
 
@@ -18,6 +18,10 @@ export default function RootLayout() {
     <AIProvider>
       <ProgressProvider>
       <ThemeProvider value={LightTheme}>
+      <Head>
+        <title>StudyLens — Learn from your mistakes</title>
+        <meta name="description" content="StudyLens analyzes how students solve problems, finds where their reasoning changed, and turns mistakes into targeted practice." />
+      </Head>
       <Stack
         screenOptions={{
           headerStyle: { backgroundColor: '#FFFFFF' },
@@ -32,7 +36,7 @@ export default function RootLayout() {
           }
         }}
       >
-        <Stack.Screen name="index" options={{ title: 'StudyLens', headerShown: false }} />
+        <Stack.Screen name="index" options={{ title: 'StudyLens — Learn from your mistakes', headerShown: false }} />
         <Stack.Screen name="scan" options={{ title: 'Scan Homework', presentation: 'modal' }} />
         <Stack.Screen name="analysis" options={{ title: 'Analysis', headerShown: false }} />
         <Stack.Screen name="mistake" options={{ title: 'Result' }} />

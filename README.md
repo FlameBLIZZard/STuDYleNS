@@ -13,6 +13,8 @@ finds where their reasoning changed,
 explains the mistake,
 and turns it into targeted practice.
 
+### [Try the Web Prototype](https://studylens.aditya-dev.com/)
+
 ---
 
 ## Traditional Answer Checking VS StudyLens Reasoning Analysis

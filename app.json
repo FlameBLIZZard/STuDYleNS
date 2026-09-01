@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "studylens",
+    "name": "StudyLens",
     "slug": "studylens",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,7 +21,11 @@
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "name": "StudyLens — Learn from your mistakes",
+      "shortName": "StudyLens",
+      "description": "StudyLens analyzes how students solve problems, finds where their reasoning changed, and turns mistakes into targeted practice.",
+      "themeColor": "#2B5B84"
     },
     "plugins": [
       "expo-router",
