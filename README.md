@@ -8,6 +8,9 @@
 
 StudyLens is a phone-first intelligent learning companion that analyzes a student's work, identifies where their reasoning changed, explains the underlying mistake, generates targeted practice, and tracks improvement.
 
+![Mistake Detection](docs/screenshots/3-detect.png)
+*StudyLens identifies where the student's reasoning changed — not just whether the final answer is wrong.*
+
 ![Expo](https://img.shields.io/badge/Expo-1C1E24?style=flat-square&logo=expo&logoColor=white)
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
@@ -33,17 +36,29 @@ StudyLens is a phone-first intelligent learning companion that analyzes a studen
 
 ## Product Preview
 
-*(Note: Add actual product screenshots to `docs/screenshots/` before final judging).*
+### 1. Dashboard
+![Dashboard](docs/screenshots/1-dashboard.png)
+*View your overall mastery.*
 
-| Dashboard | Scan Homework | Mistake Detection |
-| :---: | :---: | :---: |
-| ![Dashboard](docs/screenshots/1-dashboard.svg) | ![Scan](docs/screenshots/2-scan.svg) | ![Detect](docs/screenshots/3-detect.svg) |
-| *View your overall mastery.* | *Show StudyLens how you solved it.* | *StudyLens identifies the exact step where reasoning changed.* |
+### 2. Scan Homework
+![Scan Homework](docs/screenshots/2-scan.png)
+*Show StudyLens how you solved it.*
 
-| Explanation | Personalized Practice | Progress |
-| :---: | :---: | :---: |
-| ![Explanation](docs/screenshots/4-explain.svg) | ![Practice](docs/screenshots/5-practice.svg) | ![Progress](docs/screenshots/6-progress.svg) |
-| *Instead of revealing an answer, it explains why the step was incorrect.* | *Targeted practice reinforces the exact concept behind the mistake.* | *Watch your mastery grow over time.* |
+### 3. Mistake Detection
+![Mistake Detection](docs/screenshots/3-detect.png)
+*StudyLens identifies the exact step where reasoning changed.*
+
+### 4. Explanation
+![Explanation](docs/screenshots/4-explain.png)
+*Instead of revealing an answer, it explains why the step was incorrect.*
+
+### 5. Personalized Practice
+![Personalized Practice](docs/screenshots/5-practice.png)
+*Targeted practice reinforces the exact concept behind the mistake.*
+
+### 6. Progress
+![Progress](docs/screenshots/6-progress.png)
+*Watch your mastery grow over time.*
 
 ---
 
