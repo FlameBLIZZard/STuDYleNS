@@ -1,18 +1,36 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import "../global.css";
+import { Stack, ThemeProvider, DefaultTheme } from "expo-router";
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
+const LightTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#F8F9FA',
+    primary: '#2B5B84',
+  },
+};
 
-SplashScreen.preventAutoHideAsync();
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function RootLayout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
+    <ThemeProvider value={LightTheme}>
+      <Stack
+        screenOptions={{
+          headerStyle: { backgroundColor: '#FFFFFF' },
+          headerTintColor: '#2B5B84',
+          headerTitleStyle: { fontWeight: '600' },
+          headerShadowVisible: false,
+          contentStyle: { backgroundColor: '#F8F9FA' }
+        }}
+      >
+        <Stack.Screen name="index" options={{ title: 'StudyLens', headerShown: false }} />
+        <Stack.Screen name="scan" options={{ title: 'Scan Homework', presentation: 'modal' }} />
+        <Stack.Screen name="analysis" options={{ title: 'Analysis', headerShown: false }} />
+        <Stack.Screen name="mistake" options={{ title: 'Result' }} />
+        <Stack.Screen name="explanation" options={{ title: 'Explanation' }} />
+        <Stack.Screen name="practice" options={{ title: 'Practice' }} />
+        <Stack.Screen name="verification" options={{ title: 'Verification', headerShown: false }} />
+        <Stack.Screen name="progress" options={{ title: 'Your Progress' }} />
+      </Stack>
     </ThemeProvider>
   );
 }
