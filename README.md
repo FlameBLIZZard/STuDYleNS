@@ -73,3 +73,15 @@ StudyLens is designed as a privacy-first, on-device application.
 - QNN execution provider (requires ONNX Runtime built with QNN support for Qualcomm).
 - Actual NPU hardware acceleration.
 - Real handwriting OCR (planned via a lightweight local vision/layout extraction layer).
+
+## Hackathon Deployment
+The web prototype is currently built for production and exposed via a secure HTTPS tunnel.
+
+**Live Prototype URL:** `https://good-fox-11.loca.lt`
+
+> **Note to Judges:** If you see a "Bypass" warning when opening the link, this is standard for Localtunnel. Simply click "Click to Continue" to view the application.
+
+**How to run this locally:**
+1. Clone the repository
+2. Run `npm install`
+3. Run `npx serve -s dist` to serve the production SPA build.
